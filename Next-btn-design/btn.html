@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AeroDrop Pagination</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "aerodrop-orange": "#ff6b35",
+              "aerodrop-light-orange": "#f7931e",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+      }
+
+      .pagination-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .pagination-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+      }
+
+      .pagination-btn:active {
+        transform: translateY(0);
+      }
+
+      .pagination-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .pagination-btn:hover::before {
+        left: 100%;
+      }
+
+      .pagination-icon {
+        transition: transform 0.3s ease;
+      }
+
+      .pagination-btn:hover .pagination-icon {
+        transform: scale(1.1);
+      }
+
+      .prev-btn:hover .pagination-icon {
+        transform: translateX(-2px) scale(1.1);
+      }
+
+      .next-btn:hover .pagination-icon {
+        transform: translateX(2px) scale(1.1);
+      }
+
+      .pagination-text {
+        font-weight: 600;
+        letter-spacing: 0.025em;
+      }
+
+      /* Disabled state */
+      .pagination-btn:disabled {
+        background: #e5e7eb;
+        color: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .pagination-btn:disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .pagination-btn:disabled::before {
+        display: none;
+      }
+
+      /* Alternative styles for different contexts */
+      .pagination-outline {
+        background: white;
+        border: 2px solid #ff6b35;
+        color: #ff6b35;
+      }
+
+      .pagination-outline:hover {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        color: white;
+        border-color: transparent;
+      }
+
+      /* Compact version */
+      .pagination-compact {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      .pagination-compact svg {
+        width: 16px;
+        height: 16px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <!-- Header -->
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">
+          AeroDrop Pagination Designs
+        </h1>
+        <p class="text-gray-600">
+          Beautiful pagination components matching your brand
+        </p>
+      </div>
+
+      <!-- Main Pagination Design -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          Main Pagination Design
+        </h2>
+        <div class="flex justify-center">
+          <ul class="flex flex-row items-center gap-4">
+            <li>
+              <button
+                class="pagination-btn prev-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                <span class="pagination-text">Previous</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn next-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <span class="pagination-text">Next</span>
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Outline Version -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          Outline Version
+        </h2>
+        <div class="flex justify-center">
+          <ul class="flex flex-row items-center gap-4">
+            <li>
+              <button
+                class="pagination-btn pagination-outline prev-btn inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                <span class="pagination-text">Previous</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn pagination-outline next-btn inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <span class="pagination-text">Next</span>
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Compact Version -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          Compact Version
+        </h2>
+        <div class="flex justify-center">
+          <ul class="flex flex-row items-center gap-3">
+            <li>
+              <button
+                class="pagination-btn pagination-compact prev-btn gradient-bg text-white inline-flex items-center justify-center rounded-lg text-sm font-medium gap-2 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <svg
+                  class="pagination-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                <span class="pagination-text">Previous</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn pagination-compact next-btn gradient-bg text-white inline-flex items-center justify-center rounded-lg text-sm font-medium gap-2 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <span class="pagination-text">Next</span>
+                <svg
+                  class="pagination-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- With Disabled State -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          With Disabled State
+        </h2>
+        <div class="flex justify-center">
+          <ul class="flex flex-row items-center gap-4">
+            <li>
+              <button
+                disabled
+                class="pagination-btn prev-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg transition-all duration-300"
+              >
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                <span class="pagination-text">Previous</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn next-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <span class="pagination-text">Next</span>
+                <svg
+                  class="pagination-icon w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Code Example -->
+      <div class="bg-gray-900 rounded-xl p-6">
+        <h2 class="text-xl font-semibold text-white mb-4">
+          HTML Code (Main Version)
+        </h2>
+        <pre
+          class="text-green-400 text-sm overflow-x-auto"
+        ><code>&lt;ul class="flex flex-row items-center gap-4"&gt;
+    &lt;li&gt;
+        &lt;button class="pagination-btn prev-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg hover:shadow-xl transition-all duration-300"&gt;
+            &lt;svg class="pagination-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"&gt;
+                &lt;path d="m15 18-6-6 6-6"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+            &lt;span class="pagination-text"&gt;Previous&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;button class="pagination-btn next-btn gradient-bg text-white inline-flex items-center justify-center rounded-xl text-sm font-medium h-12 px-6 py-3 gap-3 shadow-lg hover:shadow-xl transition-all duration-300"&gt;
+            &lt;span class="pagination-text"&gt;Next&lt;/span&gt;
+            &lt;svg class="pagination-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"&gt;
+                &lt;path d="m9 18 6-6-6-6"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+        &lt;/button&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+    </div>
+
+    <script>
+      // Add click handlers for demonstration
+      document
+        .querySelectorAll(".pagination-btn:not([disabled])")
+        .forEach((btn) => {
+          btn.addEventListener("click", function () {
+            console.log(
+              `${
+                this.classList.contains("prev-btn") ? "Previous" : "Next"
+              } clicked`
+            );
+          });
+        });
+    </script>
+  </body>
+</html>

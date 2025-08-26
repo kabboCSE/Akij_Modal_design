@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Order - Aerodrop</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .input-focus:focus {
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+      .select-focus:focus-within {
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen gradient-bg">
+    <div class="min-h-screen flex items-center justify-center p-4">
+      <div
+        role="dialog"
+        id="radix-:r19:"
+        aria-describedby="radix-:r1b:"
+        aria-labelledby="radix-:r1a:"
+        data-state="open"
+        class="glass-effect rounded-2xl shadow-2xl w-full max-w-6xl relative overflow-hidden"
+        tabindex="-1"
+        style="pointer-events: auto"
+      >
+        <!-- Decorative Elements -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-300/20 to-transparent rounded-full animate-float"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-orange-200/15 to-transparent rounded-full"
+        ></div>
+
+        <!-- Header -->
+        <div
+          class="relative z-10 flex flex-col space-y-1.5 text-center sm:text-left p-8 border-b border-orange-100"
+        >
+          <h2
+            id="radix-:r1a:"
+            class="font-bold text-3xl text-gray-800 flex items-center gap-3"
+          >
+            <div
+              class="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                ></path>
+              </svg>
+            </div>
+            Create Order
+          </h2>
+          <p class="text-gray-600 text-lg">Complete your order details below</p>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 p-8">
+          <!-- Shipping Address Section -->
+          <div class="bg-white/70 rounded-xl p-6 mb-8 border border-orange-100">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-xl text-gray-800">
+                Shipping Address
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-1">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="Enter your full name"
+                  value="Md. Kabbo"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="Street address, apartment, suite, etc."
+                  value="6/2 Kazi Nazrul Islam Rd, Dhaka 1207"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >City</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="City"
+                  value="Dhaka"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Province/State</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="Province or State"
+                  value=""
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Country</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="Country"
+                  value="Bangladesh"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Postal Code</label
+                >
+                <input
+                  type="text"
+                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                  placeholder="Postal/Zip Code"
+                  value="1207"
+                />
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Mobile Number</label
+                >
+                <div
+                  class="relative flex w-full items-center rounded-lg border border-gray-200 bg-white/80 select-focus"
+                >
+                  <div>
+                    <button
+                      type="button"
+                      class="flex items-center gap-2 bg-gray-50 p-3 text-gray-700 outline-none rounded-l-lg border-r border-gray-200 hover:bg-gray-100 transition-colors"
+                    >
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/320px-Flag_of_Bangladesh.svg.png"
+                        alt="Bangladesh Flag"
+                        class="h-5 w-5 rounded object-cover"
+                      />
+                      <span class="text-sm font-medium">+880</span>
+                      <svg
+                        class="w-4 h-4 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <input
+                    id="mobileNumber"
+                    type="tel"
+                    placeholder="Enter mobile number"
+                    class="flex-1 p-3 outline-none bg-transparent"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Items Section -->
+          <div class="bg-white/70 rounded-xl p-6 border border-orange-100">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-xl text-gray-800">Order Items</h3>
+            </div>
+
+            <div class="overflow-hidden rounded-lg border border-gray-200">
+              <table class="w-full">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th
+                      class="px-6 py-4 text-left text-sm font-semibold text-gray-700"
+                    >
+                      Product
+                    </th>
+                    <th
+                      class="px-6 py-4 text-left text-sm font-semibold text-gray-700"
+                    >
+                      Supplier
+                    </th>
+                    <th
+                      class="px-6 py-4 text-left text-sm font-semibold text-gray-700"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="px-6 py-4 text-left text-sm font-semibold text-gray-700"
+                    >
+                      Qty
+                    </th>
+                    <th
+                      class="px-6 py-4 text-left text-sm font-semibold text-gray-700"
+                    >
+                      Total
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white">
+                  <tr
+                    class="border-t border-gray-100 hover:bg-orange-50/50 transition-colors"
+                  >
+                    <td class="px-6 py-4">
+                      <div class="flex items-start gap-3">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center"
+                        >
+                          <svg
+                            class="w-6 h-6 text-orange-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <p
+                            class="font-medium text-gray-900 text-sm leading-tight"
+                          >
+                            Costumes Accessories European and American Fashion
+                            Women's Clothing Washed and Worn Deep V Tight
+                            Long-sleeved Autumn Jumpsuits
+                          </p>
+                          <p class="text-gray-500 text-sm mt-1">Beige / L</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="relative">
+                        <select
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all select-focus bg-white appearance-none pr-10"
+                        >
+                          <option value="">Select supplier</option>
+                          <option value="aliexpress">AliExpress</option>
+                          <option value="alibaba">Alibaba</option>
+                          <option value="1688">1688</option>
+                        </select>
+                        <div
+                          class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="font-semibold text-gray-900">$34.32</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2">
+                        <button
+                          class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M20 12H4"
+                            ></path>
+                          </svg>
+                        </button>
+                        <span
+                          class="w-8 text-center font-semibold text-gray-900"
+                          >1</span
+                        >
+                        <button
+                          class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 4v16m8-8H4"
+                            ></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="font-bold text-gray-900 text-lg"
+                        >$34.32</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="mt-6 flex justify-end">
+              <div
+                class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg p-6 min-w-72"
+              >
+                <h4 class="font-semibold text-gray-800 mb-4">Order Summary</h4>
+                <div class="space-y-2">
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Subtotal:</span>
+                    <span class="font-medium">$34.32</span>
+                  </div>
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Shipping:</span>
+                    <span class="font-medium">Free</span>
+                  </div>
+                  <div class="border-t border-orange-200 pt-2 mt-3">
+                    <div class="flex justify-between">
+                      <span class="font-semibold text-gray-800">Total:</span>
+                      <span class="font-bold text-xl text-orange-600"
+                        >$34.32</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div
+          class="relative z-10 flex justify-between items-center border-t border-orange-100 p-8"
+        >
+          <button
+            class="px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors font-medium"
+          >
+            Save as Draft
+          </button>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+            >
+              Cancel
+            </button>
+            <button
+              class="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button
+          type="button"
+          class="absolute right-6 top-6 rounded-full w-10 h-10 bg-white/80 hover:bg-white transition-all flex items-center justify-center shadow-lg hover:shadow-xl"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-gray-600"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+          <span class="sr-only">Close</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

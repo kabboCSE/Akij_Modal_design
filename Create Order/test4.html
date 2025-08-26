@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Order - Aerodrop</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .gradient-bg {
+        /* background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); */
+        background: white;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .input-focus:focus {
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+      .select-focus:focus-within {
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      [data-radix-scroll-area-viewport] {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      [data-radix-scroll-area-viewport]::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen gradient-bg">
+    <div class="min-h-screen flex items-center justify-center">
+      <div
+        role="dialog"
+        id="radix-:r19:"
+        aria-describedby="radix-:r1b:"
+        aria-labelledby="radix-:r1a:"
+        data-state="open"
+        class="fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg ml-2 mr-2 w-full max-w-full lg:w-[1000px] xl:w-[1200px] glass-effect rounded-2xl shadow-2xl overflow-hidden"
+        tabindex="-1"
+        style="pointer-events: auto"
+      >
+        <!-- Decorative Elements -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-300/20 to-transparent rounded-full animate-float"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-orange-200/15 to-transparent rounded-full"
+        ></div>
+
+        <!-- Header -->
+        <div
+          class="flex flex-col space-y-1.5 text-center sm:text-left relative z-10"
+        >
+          <h2
+            id="radix-:r1a:"
+            class="font-bold text-3xl text-gray-800 flex items-center gap-3"
+          >
+            <div
+              class="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                ></path>
+              </svg>
+            </div>
+            Create Order
+          </h2>
+          <p class="text-gray-600 text-lg">Complete your order details below</p>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div
+          dir="ltr"
+          class="relative overflow-hidden h-[60vh]"
+          style="
+            position: relative;
+            --radix-scroll-area-corner-width: 0px;
+            --radix-scroll-area-corner-height: 0px;
+          "
+        >
+          <div
+            data-radix-scroll-area-viewport=""
+            class="h-full w-full rounded-[inherit] *:!block"
+            style="overflow: hidden scroll"
+          >
+            <div style="min-width: 100%; display: table">
+              <div class="grid gap-4 md:grid-cols-1 relative z-10">
+                <!-- Shipping Address Section -->
+                <div class="bg-white/70 rounded-xl border border-orange-100">
+                  <div class="flex flex-col space-y-1.5 p-6">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center"
+                      >
+                        <svg
+                          class="w-4 h-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          ></path>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <h3 class="font-semibold text-xl text-gray-800">
+                        Shipping Address
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div class="p-6 -mt-10 space-y-4">
+                    <div class="grid grid-cols-3 gap-4">
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >Name</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="Enter your full name"
+                          value="Md. Kabbo"
+                          autocomplete="off"
+                        />
+                      </div>
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >Address</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="Street address, apartment, suite, etc."
+                          value="6/2 Kazi Nazrul Islam Rd, Dhaka 1207"
+                        />
+                      </div>
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >City</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="City"
+                          value="Dhaka"
+                        />
+                      </div>
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >Province</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="Province or State"
+                          value=""
+                        />
+                      </div>
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >Country</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="Country"
+                          value="Bangladesh"
+                        />
+                      </div>
+                      <div>
+                        <label class="mb-1 block text-sm font-medium"
+                          >Postal Code</label
+                        >
+                        <input
+                          type="text"
+                          class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all input-focus bg-white/80"
+                          placeholder="Postal/Zip Code"
+                          value="1207"
+                        />
+                      </div>
+                      <div class="mb-4">
+                        <label class="mb-1 block text-sm font-medium"
+                          >Mobile Number</label
+                        >
+                        <div
+                          class="relative flex w-full items-center rounded-lg border border-gray-200 bg-white/80 select-focus"
+                        >
+                          <div>
+                            <button
+                              type="button"
+                              class="flex items-center gap-2 bg-gray-50 p-3 text-gray-700 outline-none rounded-l-lg border-r border-gray-200 hover:bg-gray-100 transition-colors"
+                            >
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/320px-Flag_of_Bangladesh.svg.png"
+                                alt="Bangladesh Flag"
+                                class="h-5 w-5 rounded object-cover"
+                              />
+                              <span class="text-sm font-medium">+880</span>
+                              <svg
+                                class="w-4 h-4 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M19 9l-7 7-7-7"
+                                ></path>
+                              </svg>
+                            </button>
+                          </div>
+                          <input
+                            id="mobileNumber"
+                            type="tel"
+                            placeholder="Enter mobile number"
+                            class="flex-1 p-3 outline-none bg-transparent"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Items Table -->
+              <div class="relative w-full overflow-auto">
+                <div
+                  class="bg-white/70 rounded-xl border border-orange-100 mt-4"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-3 mb-6">
+                      <div
+                        class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center"
+                      >
+                        <svg
+                          class="w-4 h-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <h3 class="font-semibold text-xl text-gray-800">
+                        Order Items
+                      </h3>
+                    </div>
+
+                    <table class="w-full caption-bottom text-sm">
+                      <thead class="[&_tr]:border-b">
+                        <tr
+                          class="border-b transition-colors data-[state=selected]:bg-muted items-center hover:bg-transparent"
+                        >
+                          <th
+                            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0"
+                          >
+                            Supplier
+                          </th>
+                          <th
+                            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0"
+                          >
+                            Price
+                          </th>
+                          <th
+                            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0"
+                          >
+                            Quantity
+                          </th>
+                          <th
+                            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0"
+                          >
+                            Sub Total
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="[&_tr:last-child]:border-0">
+                        <tr
+                          class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted cursor-pointer font-medium text-slate-900"
+                        >
+                          <td
+                            class="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+                          >
+                            <span class="">
+                              Costumes Accessories European and American Fashion
+                              Women's Clothing Washed and Worn Deep V Tight
+                              Long-sleeved Autumn Jumpsuits - Beige / L
+                            </span>
+                          </td>
+                          <td
+                            class="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+                            style="width: 300px"
+                          >
+                            <div class="flex flex-col gap-1">
+                              <div class="relative">
+                                <select
+                                  class="w-full rounded-lg border border-gray-200 p-3 outline-none transition-all select-focus bg-white appearance-none pr-10"
+                                >
+                                  <option value="">Select supplier</option>
+                                  <option value="aliexpress">AliExpress</option>
+                                  <option value="alibaba">Alibaba</option>
+                                  <option value="1688">1688</option>
+                                </select>
+                                <div
+                                  class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+                                >
+                                  <svg
+                                    class="w-4 h-4 text-gray-400"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M19 9l-7 7-7-7"
+                                    ></path>
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td
+                            class="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+                          >
+                            34.32
+                          </td>
+                          <td
+                            class="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+                          >
+                            1
+                          </td>
+                          <td
+                            class="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+                          >
+                            34.32
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="flex justify-end border-t p-4">
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl"
+          >
+            Place Order
+          </button>
+        </div>
+
+        <!-- Close Button -->
+        <button
+          type="button"
+          onclick="closeDialog()"
+          class="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:border-none focus:outline-none focus:ring-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x h-4 w-4"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+          <span class="sr-only">Close</span>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function closeDialog() {
+        const dialog = document.getElementById("radix-:r19:");
+        if (dialog) {
+          dialog.style.display = "none";
+          // Alternatively, you could use:
+          // dialog.remove(); // to completely remove the dialog from DOM
+          // window.close(); // to close the window (if opened in popup)
+          // history.back(); // to go back in browser history
+        }
+      }
+
+      // Optional: Close dialog when clicking outside of it
+      document.addEventListener("click", function (event) {
+        const dialog = document.getElementById("radix-:r19:");
+        if (
+          event.target === dialog.parentElement &&
+          !dialog.contains(event.target)
+        ) {
+          closeDialog();
+        }
+      });
+
+      // Optional: Close dialog with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeDialog();
+        }
+      });
+    </script>
+  </body>
+</html>

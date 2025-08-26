@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      class="mx-auto w-[90%] rounded-md bg-white pb-8 pt-4 shadow-lg md:mx-auto"
+    >
+      <div>
+        <div dir="ltr" data-orientation="horizontal" class="">
+          <div
+            role="tablist"
+            aria-orientation="horizontal"
+            class="rounded-md p-1 text-muted-foreground no-scrollbar flex h-auto w-[95%] items-center justify-start overflow-x-scroll rounded-b-none border-b border-gray-300 bg-transparent pb-0 lg:ml-6 lg:gap-6"
+            tabindex="0"
+            data-orientation="horizontal"
+            style="outline: none"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="radix-:r5g:-content-draft_list"
+              data-state="active"
+              id="radix-:r5g:-trigger-draft_list"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#f3793c] data-[state=active]:border-b-[#f3793c] data-[state=active]:text-[#f3793c]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Draft List</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-inprogress_list"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-inprogress_list"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#f3793c] data-[state=active]:border-b-[#f3793c] data-[state=active]:text-[#f3793c]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              In Progress List</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-store_listing"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-store_listing"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#f3793c] data-[state=active]:border-b-[#f3793c] data-[state=active]:text-[#f3793c]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Store Listings &amp; Sourcing</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-issues"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-issues"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#ff7768] data-[state=active]:border-b-[#ff7768] data-[state=active]:text-[#ff7768]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Issues
+            </button>
+          </div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-inprogress_list"
+            hidden=""
+            id="radix-:r5g:-content-inprogress_list"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 py-5"
+          ></div>
+          <div
+            data-state="active"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-draft_list"
+            id="radix-:r5g:-content-draft_list"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 py-5"
+            style="animation-duration: 0s"
+          >
+            <div class="mx-auto w-[95%]">
+              <input
+                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                placeholder="Search"
+              />
+            </div>
+            <div class="mt-6">
+              <div class="overflow-x-visible">
+                <div class="relative w-full overflow-auto">
+                  <table class="caption-bottom text-sm w-full">
+                    <thead class="[&amp;_tr]:border-b">
+                      <tr
+                        class="border-b transition-colors data-[state=selected]:bg-muted justify-between hover:bg-transparent"
+                      >
+                        <th
+                          class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 pl-8"
+                        >
+                          Product
+                        </th>
+                        <th
+                          class="h-12 px-4 align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 pr-12 text-right"
+                        >
+                          Connection Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="[&amp;_tr:last-child]:border-0">
+                      <tr
+                        class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
+                      >
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 flex w-64 flex-col items-center gap-4 py-4 pl-8 md:w-auto md:flex-row"
+                        >
+                          <img
+                            src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FSfffaae8e929c4f6fbfe9e8f3aa690098K.jpg"
+                            alt="Product 1"
+                            class="mr-4 h-40 w-40 rounded-md object-cover md:h-12 md:w-12"
+                          /><a
+                            class="text-sm font-bold hover:underline"
+                            href="/dashboard/product/1005006156829159?imageUrl=https://ae01.alicdn.com/kf/Sfffaae8e929c4f6fbfe9e8f3aa690098K.jpg&amp;price=U21.29"
+                            >French Style Fashion Pleated Dresses Spring Autumn
+                            Spliced Fake Two Pieces Women's Clothing Sweet
+                            Turn-down Collar Midi Dress</a
+                          >
+                        </td>
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 px-4 py-2"
+                        >
+                          <div class="flex items-center justify-end gap-1">
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-[#ffda6b] px-5 py-3 text-black hover:bg-[#b99c44]"
+                              type="button"
+                            >
+                              Review &amp; Publish
+                            </button>
+                          </div>
+                        </td>
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 border-b px-4 py-2"
+                        >
+                          <div class="flex items-center justify-end gap-3">
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-auto px-3 py-1"
+                              type="button"
+                              id="radix-:r5l:"
+                              aria-haspopup="menu"
+                              aria-expanded="false"
+                              data-state="closed"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-ellipsis w-4"
+                              >
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
+                      >
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 flex w-64 flex-col items-center gap-4 py-4 pl-8 md:w-auto md:flex-row border-b"
+                        >
+                          <img
+                            src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FS2aaaf71f7ac94ba683c5df9c8e7f07607.jpg"
+                            alt="Product 1"
+                            class="mr-4 h-40 w-40 rounded-md object-cover md:h-12 md:w-12"
+                          /><a
+                            class="text-sm font-bold hover:underline"
+                            href="/dashboard/product/1005008499043480?imageUrl=https://ae01.alicdn.com/kf/S2aaaf71f7ac94ba683c5df9c8e7f07607.jpg&amp;price=U15.63"
+                            >Fashionable Floral Dress with High-end Mid-length
+                            Skirt Goddess Fan Yang Temperament V-neck Slim
+                            Skirt</a
+                          >
+                        </td>
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 px-4 py-2 border-b"
+                        >
+                          <div class="flex items-center justify-end gap-1">
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-[#ffda6b] px-5 py-3 text-black hover:bg-[#b99c44]"
+                              type="button"
+                            >
+                              Review &amp; Publish
+                            </button>
+                          </div>
+                        </td>
+                        <td
+                          class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 px-4 py-2 border-b"
+                        >
+                          <div class="flex items-center justify-end gap-3">
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-auto px-3 py-1"
+                              type="button"
+                              id="radix-:r5n:"
+                              aria-haspopup="menu"
+                              aria-expanded="false"
+                              data-state="closed"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-ellipsis w-4"
+                              >
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <nav
+                  role="navigation"
+                  aria-label="pagination"
+                  class="mx-auto flex w-full justify-center my-4"
+                >
+                  <ul class="flex flex-row items-center gap-1">
+                    <li class="cursor-pointer">
+                      <a
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pl-2.5 pointer-events-none opacity-50"
+                        aria-label="Go to previous page"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-chevron-left h-4 w-4"
+                        >
+                          <path d="m15 18-6-6 6-6"></path></svg
+                        ><span>Previous</span></a
+                      >
+                    </li>
+                    <li class="cursor-pointer">
+                      <a
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pr-2.5 pointer-events-none opacity-50"
+                        aria-label="Go to next page"
+                        ><span>Next</span
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-chevron-right h-4 w-4"
+                        >
+                          <path d="m9 18 6-6-6-6"></path></svg
+                      ></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-store_listing"
+            hidden=""
+            id="radix-:r5g:-content-store_listing"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4"
+          ></div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-issues"
+            hidden=""
+            id="radix-:r5g:-content-issues"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

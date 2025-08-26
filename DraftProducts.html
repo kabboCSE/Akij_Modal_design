@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AeroDrop - Draft Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "aerodrop-orange": "#ff6b35",
+              "aerodrop-light-orange": "#f7931e",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .product-image {
+        transition: transform 0.3s ease;
+      }
+
+      .product-image:hover {
+        transform: scale(1.05);
+      }
+
+      .review-btn {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        transition: all 0.3s ease;
+      }
+
+      .review-btn:hover {
+        background: linear-gradient(135deg, #e55a2b, #de8510);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      }
+
+      .tab-active {
+        color: #ff6b35 !important;
+        border-bottom-color: #ff6b35 !important;
+      }
+
+      .search-input:focus {
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div
+      class="mx-auto w-[90%] rounded-md bg-white pb-8 pt-4 shadow-lg md:mx-auto"
+    >
+      <div>
+        <div dir="ltr" data-orientation="horizontal" class="">
+          <div
+            role="tablist"
+            aria-orientation="horizontal"
+            class="rounded-md p-1 text-muted-foreground no-scrollbar flex h-auto w-[95%] items-center justify-start overflow-x-scroll rounded-b-none border-b border-gray-300 bg-transparent pb-0 lg:ml-6 lg:gap-6"
+            tabindex="0"
+            data-orientation="horizontal"
+            style="outline: none"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="radix-:r5g:-content-draft_list"
+              data-state="active"
+              id="radix-:r5g:-trigger-draft_list"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#ff6b35] data-[state=active]:border-b-[#ff6b35] data-[state=active]:text-[#ff6b35] tab-active"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Draft List
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-inprogress_list"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-inprogress_list"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#ff6b35] data-[state=active]:border-b-[#ff6b35] data-[state=active]:text-[#ff6b35] text-gray-500"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              In Progress List
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-store_listing"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-store_listing"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#ff6b35] data-[state=active]:border-b-[#ff6b35] data-[state=active]:text-[#ff6b35] text-gray-500"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Store Listings & Sourcing
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r5g:-content-issues"
+              data-state="inactive"
+              id="radix-:r5g:-trigger-issues"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#ff6b35] data-[state=active]:border-b-[#ff6b35] data-[state=active]:text-[#ff6b35] text-gray-500"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Issues
+            </button>
+          </div>
+
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-inprogress_list"
+            hidden=""
+            id="radix-:r5g:-content-inprogress_list"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 py-5"
+          ></div>
+
+          <div
+            data-state="active"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-draft_list"
+            id="radix-:r5g:-content-draft_list"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 py-5"
+            style="animation-duration: 0s"
+          >
+            <div class="mx-auto w-[95%]">
+              <div class="relative">
+                <input
+                  class="search-input flex h-12 w-full rounded-xl border-2 border-gray-200 bg-gray-50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-12 transition-all"
+                  placeholder="Search products..."
+                />
+                <svg
+                  class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <div class="overflow-x-visible">
+                <div class="relative w-full overflow-auto">
+                  <table class="caption-bottom text-sm w-full">
+                    <thead class="[&_tr]:border-b">
+                      <tr
+                        class="border-b transition-colors data-[state=selected]:bg-muted justify-between hover:bg-transparent"
+                      >
+                        <th
+                          class="h-12 px-4 text-left align-middle font-semibold text-gray-700 [&:has([role=checkbox])]:pr-0 pl-8"
+                        >
+                          Product
+                        </th>
+                        <th
+                          class="h-12 px-4 align-middle font-semibold text-gray-700 [&:has([role=checkbox])]:pr-0 pr-12 text-right"
+                        >
+                          Connection Status
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="[&_tr:last-child]:border-0">
+                      <tr
+                        class="card-hover border-b transition-colors hover:bg-gray-50 data-[state=selected]:bg-muted group"
+                      >
+                        <td
+                          class="p-4 align-middle [&:has([role=checkbox])]:pr-0 flex w-64 flex-col items-center gap-4 py-6 pl-8 md:w-auto md:flex-row"
+                        >
+                          <div class="overflow-hidden rounded-xl shadow-sm">
+                            <img
+                              src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FSfffaae8e929c4f6fbfe9e8f3aa690098K.jpg"
+                              alt="Product 1"
+                              class="product-image mr-4 h-40 w-40 rounded-xl object-cover md:h-16 md:w-16"
+                            />
+                          </div>
+                          <a
+                            class="text-sm font-semibold hover:underline hover:text-aerodrop-orange transition-colors"
+                            href="/dashboard/product/1005006156829159?imageUrl=https://ae01.alicdn.com/kf/Sfffaae8e929c4f6fbfe9e8f3aa690098K.jpg&price=U21.29"
+                          >
+                            French Style Fashion Pleated Dresses Spring Autumn
+                            Spliced Fake Two Pieces Women's Clothing Sweet
+                            Turn-down Collar Midi Dress
+                          </a>
+                        </td>
+                        <td
+                          class="p-4 align-middle [&:has([role=checkbox])]:pr-0 px-4 py-2"
+                        >
+                          <div class="flex items-center justify-end gap-3">
+                            <button
+                              class="review-btn inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-6 py-3 text-white shadow-md"
+                              type="button"
+                            >
+                              <svg
+                                class="w-4 h-4 mr-2"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                ></path>
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                ></path>
+                              </svg>
+                              Review & Publish
+                            </button>
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 h-10 px-3 py-1"
+                              type="button"
+                              id="radix-:r5l:"
+                              aria-haspopup="menu"
+                              aria-expanded="false"
+                              data-state="closed"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-ellipsis w-4"
+                              >
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="card-hover border-b transition-colors hover:bg-gray-50 data-[state=selected]:bg-muted group"
+                      >
+                        <td
+                          class="p-4 align-middle [&:has([role=checkbox])]:pr-0 flex w-64 flex-col items-center gap-4 py-6 pl-8 md:w-auto md:flex-row border-b-0"
+                        >
+                          <div class="overflow-hidden rounded-xl shadow-sm">
+                            <img
+                              src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FS2aaaf71f7ac94ba683c5df9c8e7f07607.jpg"
+                              alt="Product 2"
+                              class="product-image mr-4 h-40 w-40 rounded-xl object-cover md:h-16 md:w-16"
+                            />
+                          </div>
+                          <a
+                            class="text-sm font-semibold hover:underline hover:text-aerodrop-orange transition-colors"
+                            href="/dashboard/product/1005008499043480?imageUrl=https://ae01.alicdn.com/kf/S2aaaf71f7ac94ba683c5df9c8e7f07607.jpg&price=U15.63"
+                          >
+                            Fashionable Floral Dress with High-end Mid-length
+                            Skirt Goddess Fan Yang Temperament V-neck Slim Skirt
+                          </a>
+                        </td>
+                        <td
+                          class="p-4 align-middle [&:has([role=checkbox])]:pr-0 px-4 py-2 border-b-0"
+                        >
+                          <div class="flex items-center justify-end gap-3">
+                            <button
+                              class="review-btn inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-6 py-3 text-white shadow-md"
+                              type="button"
+                            >
+                              <svg
+                                class="w-4 h-4 mr-2"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                ></path>
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                ></path>
+                              </svg>
+                              Review & Publish
+                            </button>
+                            <button
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 h-10 px-3 py-1"
+                              type="button"
+                              id="radix-:r5n:"
+                              aria-haspopup="menu"
+                              aria-expanded="false"
+                              data-state="closed"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-ellipsis w-4"
+                              >
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <nav
+                  role="navigation"
+                  aria-label="pagination"
+                  class="mx-auto flex w-full justify-center my-8"
+                >
+                  <ul class="flex flex-row items-center gap-1">
+                    <li class="cursor-pointer">
+                      <a
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-700 h-10 px-4 py-2 gap-1 pl-2.5 pointer-events-none opacity-50"
+                        aria-label="Go to previous page"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-chevron-left h-4 w-4"
+                        >
+                          <path d="m15 18-6-6 6-6"></path>
+                        </svg>
+                        <span>Previous</span>
+                      </a>
+                    </li>
+                    <li class="cursor-pointer">
+                      <a
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-700 h-10 px-4 py-2 gap-1 pr-2.5 pointer-events-none opacity-50"
+                        aria-label="Go to next page"
+                      >
+                        <span>Next</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-chevron-right h-4 w-4"
+                        >
+                          <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-store_listing"
+            hidden=""
+            id="radix-:r5g:-content-store_listing"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4"
+          ></div>
+
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r5g:-trigger-issues"
+            hidden=""
+            id="radix-:r5g:-content-issues"
+            tabindex="0"
+            class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Tab switching functionality
+      const tabs = document.querySelectorAll('button[role="tab"]');
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          // Remove active class from all tabs
+          tabs.forEach((t) => {
+            t.classList.remove("tab-active");
+            t.classList.add("text-gray-500");
+            t.setAttribute("aria-selected", "false");
+            t.setAttribute("data-state", "inactive");
+          });
+
+          // Add active class to clicked tab
+          this.classList.add("tab-active");
+          this.classList.remove("text-gray-500");
+          this.setAttribute("aria-selected", "true");
+          this.setAttribute("data-state", "active");
+
+          // Show corresponding content (simplified for demo)
+          const targetId = this.getAttribute("aria-controls");
+          document.querySelectorAll('[role="tabpanel"]').forEach((panel) => {
+            panel.setAttribute("hidden", "");
+            panel.setAttribute("data-state", "inactive");
+          });
+
+          const targetPanel = document.getElementById(targetId);
+          if (targetPanel) {
+            targetPanel.removeAttribute("hidden");
+            targetPanel.setAttribute("data-state", "active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

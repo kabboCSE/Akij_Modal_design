@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      role="dialog"
+      id="radix-:r25:"
+      aria-describedby="radix-:r27:"
+      aria-labelledby="radix-:r26:"
+      data-state="open"
+      class="fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg ml-2 mr-2 w-full max-w-full lg:w-[1028px]"
+      tabindex="-1"
+      style="pointer-events: auto"
+    >
+      <div class="flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 id="radix-:r26:" class="tracking-tight mb-2 text-3xl font-medium">
+          Review &amp; Publish
+        </h2>
+        <p
+          id="radix-:r27:"
+          class="text-sm text-muted-foreground mt-4 w-1/2 max-w-full"
+        >
+          You can edit your product listing here and import it to your store, or
+          add it to your store right away and make changes later on in your
+          store.
+        </p>
+      </div>
+      <div>
+        <div dir="ltr" data-orientation="horizontal" class="w-full">
+          <div
+            role="tablist"
+            aria-orientation="horizontal"
+            class="inline-flex h-10 items-center rounded-md p-1 text-muted-foreground w-full justify-normal gap-6 border-b bg-transparent py-8"
+            tabindex="0"
+            data-orientation="horizontal"
+            style="outline: none"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="radix-:r28:-content-product_tabs"
+              data-state="active"
+              id="radix-:r28:-trigger-product_tabs"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#8472ed] data-[state=active]:border-b-[#8472ed] data-[state=active]:text-[#8472ed]"
+              tabindex="0"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Product</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r28:-content-description_tabs"
+              data-state="inactive"
+              id="radix-:r28:-trigger-description_tabs"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#8472ed] data-[state=active]:border-b-[#8472ed] data-[state=active]:text-[#8472ed]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Description</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r28:-content-variants_tabs"
+              data-state="inactive"
+              id="radix-:r28:-trigger-variants_tabs"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#8472ed] data-[state=active]:border-b-[#8472ed] data-[state=active]:text-[#8472ed]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Variants</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="radix-:r28:-content-images_tabs"
+              data-state="inactive"
+              id="radix-:r28:-trigger-images_tabs"
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-none border-0 border-b-2 border-b-transparent bg-transparent py-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#8472ed] data-[state=active]:border-b-[#8472ed] data-[state=active]:text-[#8472ed]"
+              tabindex="-1"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+            >
+              Images
+            </button>
+          </div>
+          <div
+            data-state="active"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r28:-trigger-product_tabs"
+            id="radix-:r28:-content-product_tabs"
+            tabindex="0"
+            class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mx-8 mt-5"
+            style=""
+          >
+            <div class="flex justify-between gap-5">
+              <div class="w-[30%]">
+                <div class="h-full w-full">
+                  <img
+                    class="aspect-square h-full w-full bg-cover"
+                    src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FS76e8bd6132884e1f8f7c6c4fcafa42c2E.jpg"
+                    alt="publishImg"
+                  />
+                </div>
+              </div>
+              <div class="w-[65%]">
+                <div class="space-y-4">
+                  <h3 class="font-semibold">Product Name</h3>
+                  <input
+                    class="flex h-10 w-full rounded-md border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 border-0 bg-slate-100 focus-visible:ring-offset-0"
+                    placeholder="Enter Product name"
+                    value="European and American Fashion Trends Are Versatile, Exaggerated Flower Eyes, Rings, Golden Elegance"
+                  />
+                  <h3 class="font-semibold">Product Tags</h3>
+                  <div class="flex w-full items-center gap-2">
+                    <input
+                      class="flex h-10 rounded-md border bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 w-[90%] border-dashed border-slate-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      placeholder="Add new tag"
+                      value=""
+                    /><button
+                      class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-transparent text-sm font-semibold text-black underline hover:bg-transparent hover:text-gray-500"
+                      type="button"
+                    >
+                      Add
+                    </button>
+                  </div>
+                  <div class="mb-2 flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r28:-trigger-description_tabs"
+            id="radix-:r28:-content-description_tabs"
+            tabindex="0"
+            class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-5"
+            hidden=""
+          ></div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r28:-trigger-variants_tabs"
+            id="radix-:r28:-content-variants_tabs"
+            tabindex="0"
+            class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-5"
+            hidden=""
+          ></div>
+          <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-:r28:-trigger-images_tabs"
+            id="radix-:r28:-content-images_tabs"
+            tabindex="0"
+            class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-5"
+            hidden=""
+          ></div>
+        </div>
+        <div class="mb-3 mt-6 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex w-full items-center justify-end gap-3">
+              <button
+                class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-auto border-[#63d295] bg-[#63d295] px-10 py-4 text-lg font-medium text-white hover:bg-[#4ead79]"
+                type="button"
+              >
+                Publish to my store
+              </button>
+            </div>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-transparent text-sm font-semibold text-black underline hover:bg-transparent hover:text-gray-500"
+              type="button"
+            >
+              Remove from My Products
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:border-none focus:outline-none focus:ring-0"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x h-4 w-4"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path></svg
+        ><span class="sr-only">Close</span>
+      </button>
+    </div>
+  </body>
+</html>

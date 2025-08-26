@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AeroDrop - Review & Publish</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "aerodrop-orange": "#ff6b35",
+              "aerodrop-light-orange": "#f7931e",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+      }
+
+      .tab-active {
+        color: #ff6b35;
+        border-bottom-color: #ff6b35;
+      }
+
+      .tab-hover:hover {
+        color: #ff6b35;
+      }
+
+      .modal-content {
+        animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .tag {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        animation: tagSlideIn 0.3s ease-out;
+      }
+
+      @keyframes tagSlideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .product-image {
+        transition: transform 0.3s ease;
+      }
+
+      .product-image:hover {
+        transform: scale(1.02);
+      }
+
+      .input-focus:focus {
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        border-color: #ff6b35;
+      }
+
+      .publish-btn {
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .publish-btn:hover {
+        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div class="backdrop fixed inset-0 z-40"></div>
+
+    <!-- Modal -->
+    <div
+      class="modal-content fixed z-50 bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden"
+    >
+      <!-- Header -->
+      <div class="gradient-bg px-8 py-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-3xl font-bold text-white mb-2">Review & Publish</h2>
+            <p class="text-white text-opacity-90 text-sm max-w-2xl">
+              You can edit your product listing here and import it to your
+              store, or add it to your store right away and make changes later
+              on in your store.
+            </p>
+          </div>
+          <button
+            class="text-white hover:text-gray-200 transition-colors p-2 rounded-full hover:bg-white hover:bg-opacity-10"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-8 max-h-[calc(90vh-200px)] overflow-y-auto">
+        <!-- Tabs -->
+        <div class="mb-8">
+          <div class="border-b border-gray-200">
+            <nav class="flex space-x-8">
+              <button
+                class="tab-active py-4 px-1 border-b-2 font-semibold text-sm focus:outline-none transition-colors"
+              >
+                Product
+              </button>
+              <button
+                class="tab-hover py-4 px-1 border-b-2 border-transparent text-gray-500 font-semibold text-sm focus:outline-none transition-colors"
+              >
+                Description
+              </button>
+              <button
+                class="tab-hover py-4 px-1 border-b-2 border-transparent text-gray-500 font-semibold text-sm focus:outline-none transition-colors"
+              >
+                Variants
+              </button>
+              <button
+                class="tab-hover py-4 px-1 border-b-2 border-transparent text-gray-500 font-semibold text-sm focus:outline-none transition-colors"
+              >
+                Images
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Product Tab Content -->
+        <div class="flex gap-8">
+          <!-- Product Image -->
+          <div class="w-1/3">
+            <div class="aspect-square rounded-xl overflow-hidden shadow-lg">
+              <img
+                class="product-image w-full h-full object-cover"
+                src="https://images.weserv.nl/?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FS76e8bd6132884e1f8f7c6c4fcafa42c2E.jpg"
+                alt="Product Image"
+              />
+            </div>
+          </div>
+
+          <!-- Product Details -->
+          <div class="flex-1 space-y-6">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-3"
+                >Product Name</label
+              >
+              <input
+                type="text"
+                class="input-focus w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none transition-all"
+                value="European and American Fashion Trends Are Versatile, Exaggerated Flower Eyes, Rings, Golden Elegance"
+                placeholder="Enter Product name"
+              />
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-semibold mb-3"
+                >Product Tags</label
+              >
+              <div class="flex gap-3 mb-4">
+                <input
+                  type="text"
+                  id="tagInput"
+                  class="input-focus flex-1 px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl focus:outline-none transition-all"
+                  placeholder="Add new tag"
+                />
+                <button
+                  onclick="addTag()"
+                  class="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors focus:outline-none"
+                >
+                  Add
+                </button>
+              </div>
+
+              <!-- Tags Container -->
+              <div id="tagsContainer" class="flex flex-wrap gap-2">
+                <!-- Tags will be added here dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div
+        class="px-8 py-6 bg-gray-50 border-t border-gray-200 flex items-center justify-between"
+      >
+        <button
+          class="publish-btn px-8 py-4 text-white font-semibold rounded-xl focus:outline-none"
+        >
+          <svg
+            class="w-5 h-5 inline mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+          Publish to my store
+        </button>
+
+        <button
+          class="text-gray-500 hover:text-red-500 font-semibold underline transition-colors focus:outline-none"
+        >
+          Remove from My Products
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Tag management
+      let tags = [];
+
+      function addTag() {
+        const input = document.getElementById("tagInput");
+        const tagText = input.value.trim();
+
+        if (tagText && !tags.includes(tagText)) {
+          tags.push(tagText);
+          renderTags();
+          input.value = "";
+        }
+      }
+
+      function removeTag(tagText) {
+        tags = tags.filter((tag) => tag !== tagText);
+        renderTags();
+      }
+
+      function renderTags() {
+        const container = document.getElementById("tagsContainer");
+        container.innerHTML = tags
+          .map(
+            (tag) => `
+                <span class="tag inline-flex items-center px-4 py-2 rounded-full text-white text-sm font-medium">
+                    ${tag}
+                    <button onclick="removeTag('${tag}')" class="ml-2 hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition-colors">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </span>
+            `
+          )
+          .join("");
+      }
+
+      // Enter key support for adding tags
+      document
+        .getElementById("tagInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            addTag();
+          }
+        });
+
+      // Tab switching
+      const tabs = document.querySelectorAll("nav button");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          // Remove active class from all tabs
+          tabs.forEach((t) => {
+            t.classList.remove("tab-active");
+            t.classList.add("tab-hover", "text-gray-500");
+          });
+
+          // Add active class to clicked tab
+          this.classList.add("tab-active");
+          this.classList.remove("tab-hover", "text-gray-500");
+        });
+      });
+    </script>
+  </body>
+</html>

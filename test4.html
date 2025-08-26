@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      role="dialog"
+      id="radix-:rh:"
+      aria-describedby="radix-:rj:"
+      aria-labelledby="radix-:ri:"
+      data-state="open"
+      class="fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg ml-2 mr-2 w-full max-w-full lg:w-[800px]"
+      tabindex="-1"
+      style="pointer-events: auto"
+    >
+      <div class="flex flex-col space-y-1.5 text-center sm:text-left">
+        <h2 id="radix-:ri:" class="font-semibold tracking-tight text-lg">
+          Add Support
+        </h2>
+      </div>
+      <div class="rounded-lg bg-white p-4 text-center sm:p-5">
+        <form class="space-y-4">
+          <div class="space-y-2">
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Your name"
+              name="name"
+              id=":rk:-form-item"
+              aria-describedby=":rk:-form-item-description"
+              aria-invalid="false"
+              value=""
+              autocomplete="off"
+            />
+          </div>
+          <div class="space-y-2">
+            <input
+              type="email"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Your email"
+              name="email"
+              id=":rl:-form-item"
+              aria-describedby=":rl:-form-item-description"
+              aria-invalid="false"
+              value=""
+            />
+          </div>
+          <div class="space-y-2">
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Your mobile number"
+              name="mobileNumber"
+              id=":rm:-form-item"
+              aria-describedby=":rm:-form-item-description"
+              aria-invalid="false"
+              value=""
+            />
+          </div>
+          <div class="space-y-2">
+            <textarea
+              class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Describe your issue"
+              name="message"
+              id=":rn:-form-item"
+              aria-describedby=":rn:-form-item-description"
+              aria-invalid="false"
+            ></textarea>
+          </div>
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+            type="submit"
+          >
+            Submit Ticket
+          </button>
+        </form>
+      </div>
+      <button
+        type="button"
+        class="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:border-none focus:outline-none focus:ring-0"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x h-4 w-4"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path></svg
+        ><span class="sr-only">Close</span>
+      </button>
+    </div>
+  </body>
+</html>

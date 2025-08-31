@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AeroDrop - Modal Grand Final</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "aerodrop-orange": "#ff6b35",
+              "aerodrop-light-orange": "#f7931e",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+      }
+
+      .product-card {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .add-to-draft-btn {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+        opacity: 0;
+      }
+
+      .product-card:hover .add-to-draft-btn {
+        bottom: 15px;
+        opacity: 1;
+      }
+
+      .modal-content {
+        animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.95);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .success-icon {
+        background: linear-gradient(135deg, #10b981, #059669);
+        box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+      }
+
+      .help-button {
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+      }
+
+      .help-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
+      }
+
+      /* WhatsApp AI Chat Widget Styles */
+      .whatsapp-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: whatsappPulse 2s infinite;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+      }
+
+      .whatsapp-float:active {
+        transform: scale(0.95);
+      }
+
+      @keyframes whatsappPulse {
+        0% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+        50% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+        }
+        100% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+      }
+
+      .whatsapp-icon {
+        width: 32px;
+        height: 32px;
+        fill: white;
+      }
+
+      /* Chat Widget */
+      .chat-widget {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 350px;
+        height: 450px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        transform: scale(0) translateY(20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid #e5e7eb;
+      }
+
+      .chat-widget.open {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .chat-header {
+        background: #25d366;
+        color: white;
+        padding: 16px 20px;
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .chat-body {
+        height: 300px;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8fffe;
+      }
+
+      .chat-input-container {
+        padding: 16px 20px;
+        border-top: 1px solid #e5e7eb;
+        background: white;
+        border-radius: 0 0 16px 16px;
+      }
+
+      .chat-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .chat-input:focus {
+        border-color: #25d366;
+        box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+      }
+
+      .chat-input:disabled {
+        background-color: #f9fafb;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .send-button {
+        position: absolute;
+        right: 26px;
+        top: 22px;
+        width: 36px;
+        height: 36px;
+        background: #25d366;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .send-button:hover {
+        background: #128c7e;
+        transform: scale(1.05);
+      }
+
+      .send-button:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .ai-message {
+        background: #f0f0f0;
+        padding: 12px 16px;
+        border-radius: 18px 18px 18px 4px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #374151;
+      }
+
+      .user-message {
+        margin-bottom: 12px;
+      }
+
+      .typing-indicator {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        background: #f0f0f0;
+        border-radius: 18px 18px 18px 4px;
+        margin-bottom: 12px;
+      }
+
+      .typing-dots {
+        display: flex;
+        gap: 4px;
+      }
+
+      .typing-dot {
+        width: 6px;
+        height: 6px;
+        background: #9ca3af;
+        border-radius: 50%;
+        animation: typingAnimation 1.4s infinite ease-in-out;
+      }
+
+      .typing-dot:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+      .typing-dot:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+
+      @keyframes typingAnimation {
+        0%,
+        80%,
+        100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+        40% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .whatsapp-widget {
+          bottom: 15px;
+          right: 15px;
+        }
+
+        .whatsapp-float {
+          width: 55px;
+          height: 55px;
+        }
+
+        .whatsapp-icon {
+          width: 28px;
+          height: 28px;
+        }
+
+        .chat-widget {
+          width: 320px;
+          height: 400px;
+          bottom: 75px;
+        }
+
+        .chat-body {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header matching AeroDrop style -->
+    <header class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <!-- AeroDrop Logo -->
+            <div class="flex items-center">
+              <svg width="40" height="30" viewBox="0 0 120 80" class="mr-3">
+                <path
+                  d="M10 20 L70 20 L90 35 L70 50 L10 50 L30 35 Z"
+                  fill="#ff6b35"
+                />
+                <path
+                  d="M30 10 L90 10 L110 25 L90 40 L50 40 L70 25 Z"
+                  fill="#ff6b35"
+                  opacity="0.8"
+                />
+                <path
+                  d="M50 30 L80 30 L90 40 L80 50 L50 50 L60 40 Z"
+                  fill="#ff6b35"
+                  opacity="0.6"
+                />
+              </svg>
+              <span class="text-2xl font-bold text-gray-900">AERODROP</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-aerodrop-orange font-medium"
+                >Shahriar Kabbo</span
+              >
+              <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex">
+      <!-- Sidebar Navigation -->
+      <nav class="w-64 bg-white border-r border-gray-200 min-h-screen">
+        <div class="p-4">
+          <div class="flex items-center mb-6">
+            <div
+              class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3"
+            >
+              <span class="text-green-600 text-sm font-medium">S3</span>
+            </div>
+            <span class="text-gray-700 font-medium">store-3-testt</span>
+            <svg
+              class="w-4 h-4 ml-2 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15.707 4.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 8.586l4.293-4.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+              >
+                <svg
+                  class="w-5 h-5 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                  />
+                </svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center px-4 py-2 bg-aerodrop-orange text-white rounded-lg"
+              >
+                <svg
+                  class="w-5 h-5 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Find Products
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                id="draftProductsLink"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+              >
+                <svg
+                  class="w-5 h-5 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 2V6a1 1 0 112 0v1a1 1 0 11-2 0zm3 0V6a1 1 0 112 0v1a1 1 0 11-2 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Draft Products
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="flex-1">
+        <!-- Top Search Bar -->
+        <div class="gradient-bg px-6 py-4">
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+              <label class="block text-white text-sm font-medium mb-2"
+                >Select Supplier</label
+              >
+              <select
+                class="w-48 px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                <option>Ali Express</option>
+                <option>Amazon</option>
+                <option>eBay</option>
+              </select>
+            </div>
+            <div class="flex-1">
+              <label class="block text-white text-sm font-medium mb-2"
+                >Search Products</label
+              >
+              <input
+                type="text"
+                placeholder="Search Products"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="p-6">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <!-- Product 1 -->
+            <div
+              class="product-card bg-white rounded-lg shadow-md overflow-hidden border"
+            >
+              <div class="relative">
+                <img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDMwMCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjQwIiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIHJ4PSIxMCIgZmlsbD0iIzRDQUY1MCIvPgo8dGV4dCB4PSIxNTAiIHk9IjEzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R3JlZW4gSmFkZSBQZW5kYW50PC90ZXh0Pgo8L3N2Zz4K"
+                  alt="Green Jade Pendant"
+                  class="w-full h-48 object-cover"
+                />
+                <button
+                  class="add-to-draft-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium shadow-lg transition-all"
+                  onclick="openModal('The new style is...')"
+                >
+                  <svg
+                    class="w-4 h-4 inline mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Add to Draft
+                </button>
+              </div>
+              <div class="p-4">
+                <h3 class="text-gray-900 font-medium text-sm mb-2">
+                  The new style is...
+                </h3>
+                <p class="text-aerodrop-orange font-bold text-lg">US $4.65</p>
+                <p class="text-gray-500 text-xs">Product Cost</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- WhatsApp AI Chat Widget -->
+    <div class="whatsapp-widget">
+      <!-- Chat Interface -->
+      <div id="chatWidget" class="chat-widget">
+        <!-- Header -->
+        <div class="chat-header">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.485 3.488"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">AeroDrop AI Assistant</h3>
+              <p class="text-sm opacity-90">
+                Online • Usually replies instantly
+              </p>
+            </div>
+          </div>
+          <button
+            onclick="closeChatWidget()"
+            class="w-6 h-6 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all"
+          >
+            <svg
+              class="w-4 h-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Chat Body -->
+        <div class="chat-body" id="chatMessages">
+          <div class="ai-message">
+            👋 Hi there! I'm your AeroDrop AI Assistant. I can help you with
+            products, pricing, shipping, and growing your dropshipping business!
+          </div>
+          <div class="ai-message">
+            Just type your question below and I'll assist you right away. Our
+            team is also monitoring this chat for personalized support.
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+          <div class="relative">
+            <input
+              type="text"
+              id="chatInput"
+              class="chat-input"
+              placeholder="Type your message here..."
+              onkeypress="handleKeyPress(event)"
+            />
+            <button id="sendButton" class="send-button" onclick="sendMessage()">
+              <svg
+                class="w-4 h-4 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Button -->
+      <div class="whatsapp-float" onclick="toggleChatWidget()">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.485 3.488"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      id="addToDraftModal"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50 p-4"
+    >
+      <div
+        class="modal-content bg-white rounded-2xl max-w-md w-full shadow-2xl relative"
+      >
+        <!-- Close Button (top-right only) -->
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-400 hover:text-gray-600 transition-all duration-200"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Main Content -->
+        <div class="px-8 py-10">
+          <!-- Success Icon -->
+          <div class="text-center mb-6">
+            <div
+              class="success-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-green-500"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Product Added Successfully!
+            </h2>
+
+            <!-- Description -->
+            <div class="space-y-2 text-center">
+              <p class="text-gray-600 text-base">
+                The product
+                <span class="font-medium text-gray-900" id="productName"></span>
+                has been successfully added to your draft products.
+              </p>
+              <p class="text-gray-500 text-sm">
+                You can now review and publish it to your Shopify store.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="flex justify-between items-center pt-4">
+            <!-- Need Help Button -->
+            <button
+              onclick="openUserGuide()"
+              class="help-button flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 border border-blue-200 hover:border-blue-300"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>Need Help?</span>
+            </button>
+
+            <!-- Next Button -->
+            <button
+              onclick="goToDrafts()"
+              class="px-6 py-2.5 gradient-bg text-white rounded-lg font-medium hover:opacity-90 transition-all duration-200 flex items-center shadow-sm hover:shadow-md"
+            >
+              Next
+              <svg
+                class="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================================
+      // 🔥🔥🔥 WHATSAPP PHONE NUMBER CONFIGURATION - CHANGE YOUR NUMBER HERE 🔥🔥🔥
+      // ============================================================================
+      const YOUR_WHATSAPP_NUMBER = "+8801627505754"; // ⭐ CHANGE THIS TO YOUR WHATSAPP NUMBER
+      const YOUR_API_ENDPOINT = "/api/whatsapp/send"; // ⭐ CHANGE THIS TO YOUR API ENDPOINT
+      const YOUR_API_TOKEN = "YOUR_API_TOKEN"; // ⭐ CHANGE THIS IF YOUR API REQUIRES TOKEN
+
+      let currentProductName = "";
+
+      function openModal(productName) {
+        currentProductName = productName;
+        document.getElementById("productName").textContent = productName;
+        document.getElementById("addToDraftModal").classList.remove("hidden");
+        document.getElementById("addToDraftModal").classList.add("flex");
+
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("addToDraftModal").classList.add("hidden");
+        document.getElementById("addToDraftModal").classList.remove("flex");
+
+        // Restore body scroll
+        document.body.style.overflow = "";
+      }
+
+      function goToDrafts() {
+        // Navigate to Draft Products
+        document.getElementById("draftProductsLink").click();
+        closeModal();
+      }
+
+      function openUserGuide() {
+        // Add your user guide link here
+        // window.open('your-user-guide-url', '_blank');
+        alert("Need Help? User Guide will open here!");
+      }
+
+      // WhatsApp AI Chat Widget functionality
+      let isChatOpen = false;
+
+      function toggleChatWidget() {
+        const chatWidget = document.getElementById("chatWidget");
+        const chatInput = document.getElementById("chatInput");
+
+        if (isChatOpen) {
+          closeChatWidget();
+        } else {
+          openChatWidget();
+        }
+      }
+
+      function openChatWidget() {
+        const chatWidget = document.getElementById("chatWidget");
+        chatWidget.classList.add("open");
+        isChatOpen = true;
+
+        // Focus on input after animation completes
+        setTimeout(() => {
+          document.getElementById("chatInput").focus();
+        }, 300);
+      }
+
+      function closeChatWidget() {
+        const chatWidget = document.getElementById("chatWidget");
+        chatWidget.classList.remove("open");
+        isChatOpen = false;
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          sendMessage();
+        }
+      }
+
+      async function sendMessage() {
+        const chatInput = document.getElementById("chatInput");
+        const sendButton = document.getElementById("sendButton");
+        const message = chatInput.value.trim();
+
+        if (message === "") {
+          return;
+        }
+
+        // Disable input and button while sending
+        chatInput.disabled = true;
+        sendButton.disabled = true;
+
+        // Add user message to chat
+        addMessageToChat(message, "user");
+
+        // Clear input
+        chatInput.value = "";
+
+        // Show typing indicator
+        showTypingIndicator();
+
+        try {
+          // Send to WhatsApp backend
+          await sendToWhatsAppBackend(message);
+        } catch (error) {
+          console.error("Error sending message:", error);
+          removeTypingIndicator();
+          addMessageToChat(
+            "Sorry, there was an error sending your message. Our team will get back to you soon!",
+            "ai"
+          );
+        } finally {
+          // Re-enable input and button
+          chatInput.disabled = false;
+          sendButton.disabled = false;
+          chatInput.focus();
+        }
+      }
+
+      function addMessageToChat(message, sender) {
+        const chatMessages = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+
+        if (sender === "user") {
+          messageDiv.className = "user-message";
+          messageDiv.innerHTML = `
+            <div style="background: #dcf8c6; padding: 12px 16px; border-radius: 18px 18px 4px 18px; margin-bottom: 12px; margin-left: 60px; font-size: 14px; line-height: 1.4; color: #374151; text-align: right;">
+              ${message}
+            </div>
+          `;
+        } else {
+          messageDiv.className = "ai-message";
+          messageDiv.textContent = message;
+        }
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function showTypingIndicator() {
+        const chatMessages = document.getElementById("chatMessages");
+        const typingIndicator = document.createElement("div");
+        typingIndicator.className = "typing-indicator";
+        typingIndicator.id = "typingIndicator";
+        typingIndicator.innerHTML = `
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+                <span class="ml-2 text-sm text-gray-500">Agent is typing...</span>
+            `;
+
+        chatMessages.appendChild(typingIndicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function removeTypingIndicator() {
+        const typingIndicator = document.getElementById("typingIndicator");
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
+      }
+
+      // ================================================================
+      // 🚨 FOR REAL WHATSAPP BACKEND - REPLACE THIS ENTIRE FUNCTION 🚨
+      // ================================================================
+      async function sendToWhatsAppBackend(message) {
+        // 🔥 FOR REAL IMPLEMENTATION, REPLACE THIS ENTIRE FUNCTION WITH:
+        /*
+        try {
+          const response = await fetch(YOUR_API_ENDPOINT, {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${YOUR_API_TOKEN}` // if needed
+            },
+            body: JSON.stringify({ 
+              message: message, 
+              phone: YOUR_WHATSAPP_NUMBER,  // Uses the phone number from top of file
+              customerPhone: 'CUSTOMER_PHONE', // if you collect customer's number
+              timestamp: new Date().toISOString()
+            })
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            removeTypingIndicator();
+            
+            // Use the response from your backend/WhatsApp API
+            if (data.reply) {
+              addMessageToChat(data.reply, 'ai');
+            } else {
+              addMessageToChat("Message sent! Our team will respond shortly.", 'ai');
+            }
+            
+            return { success: true };
+          } else {
+            throw new Error(data.error || 'Failed to send message');
+          }
+          
+        } catch (error) {
+          console.error('WhatsApp API Error:', error);
+          throw error;
+        }
+        */
+
+        // 🎯 TEMPORARY SIMULATION (REMOVE THIS FOR REAL BACKEND)
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            removeTypingIndicator();
+
+            // Generate contextual response based on message content
+            const response = generateAIResponse(message);
+            addMessageToChat(response, "ai");
+
+            resolve({ success: true });
+          }, 2000 + Math.random() * 1000);
+        });
+      }
+
+      // 🎯 TEMPORARY FUNCTION - REMOVE FOR REAL BACKEND
+      function generateAIResponse(userMessage) {
+        const message = userMessage.toLowerCase();
+
+        // Contextual responses based on user input
+        if (
+          message.includes("price") ||
+          message.includes("cost") ||
+          message.includes("pricing")
+        ) {
+          return "Our pricing is very competitive! Products typically range from $2-50 with profit margins of 200-500%. Would you like me to show you some specific product categories?";
+        } else if (
+          message.includes("shipping") ||
+          message.includes("delivery")
+        ) {
+          return "We offer fast shipping worldwide! Most orders arrive within 7-15 days. We also provide tracking numbers for all shipments. What country are you shipping to?";
+        } else if (message.includes("product") || message.includes("item")) {
+          return "We have thousands of trending products! Electronics, fashion, home decor, fitness gear, and more. I can help you find winning products for your niche. What category interests you?";
+        } else if (
+          message.includes("start") ||
+          message.includes("begin") ||
+          message.includes("new")
+        ) {
+          return "Great! Starting a dropshipping business is exciting! 🚀 I recommend beginning with our starter package. Would you like me to schedule a free consultation call with our team?";
+        } else if (message.includes("help") || message.includes("support")) {
+          return "I'm here to help! Our team provides 24/7 support for product research, store setup, marketing strategies, and order management. What specific area do you need assistance with?";
+        } else if (message.includes("store") || message.includes("shopify")) {
+          return "We integrate seamlessly with Shopify, WooCommerce, and other platforms! Our team can help set up your entire store with winning products. Would you like a free store review?";
+        } else if (message.includes("thanks") || message.includes("thank")) {
+          return "You're very welcome! Is there anything else I can help you with today? Our team is always here to support your success! 😊";
+        } else {
+          return "Thanks for reaching out! Our team has received your message and will get back to you shortly. In the meantime, feel free to browse our trending products or ask me any questions about dropshipping!";
+        }
+      }
+
+      // Close chat widget when clicking outside
+      document.addEventListener("click", function (e) {
+        const chatWidget = document.getElementById("chatWidget");
+        const whatsappFloat = document.querySelector(".whatsapp-float");
+
+        if (
+          isChatOpen &&
+          !chatWidget.contains(e.target) &&
+          !whatsappFloat.contains(e.target)
+        ) {
+          closeChatWidget();
+        }
+      });
+
+      // Close chat widget with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && isChatOpen) {
+          closeChatWidget();
+        }
+      });
+
+      // Close modal when clicking outside
+      document
+        .getElementById("addToDraftModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Add smooth scroll effect when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log(
+          "AeroDrop AI WhatsApp Chat Widget with backend integration loaded successfully!"
+        );
+        console.log("Current WhatsApp Number:", YOUR_WHATSAPP_NUMBER);
+      });
+    </script>
+  </body>
+</html>

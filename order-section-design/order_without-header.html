@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AERODROP Orders</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <div class="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
+      <!-- Main Content -->
+      <div class="p-6 flex justify-center">
+        <div
+          class="w-[90%] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden"
+        >
+          <!-- Search and Filters -->
+          <div class="bg-gradient-to-r from-orange-500 to-red-500 p-6">
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+            >
+              <div class="relative flex-1 max-w-md">
+                <i
+                  class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70"
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Search orders, customers, or order IDs..."
+                  class="w-full pl-10 pr-4 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:bg-white/30 focus:border-white/50 transition-all duration-200"
+                />
+              </div>
+              <div class="flex space-x-3">
+                <select
+                  class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:bg-white/30 focus:border-white/50 transition-all duration-200"
+                >
+                  <option value="">All Status</option>
+                  <option value="paid">Paid</option>
+                  <option value="pending">Pending</option>
+                  <option value="refunded">Refunded</option>
+                </select>
+                <select
+                  class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:bg-white/30 focus:border-white/50 transition-all duration-200"
+                >
+                  <option value="">All Orders</option>
+                  <option value="fulfilled">Fulfilled</option>
+                  <option value="unfulfilled">Unfulfilled</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Order
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Date & Time
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Customer
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Total
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Payment Status
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Order Status
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Third Party Order
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Third Party Order Tracking
+                  </th>
+                  <th
+                    class="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <!-- Order #1005 -->
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                      <a
+                        href="https://admin.shopify.com/store/kabbo3-store-test/orders/6223296594133"
+                        target="_blank"
+                        class="text-orange-600 hover:text-orange-800 font-semibold text-sm hover:underline transition-colors duration-150"
+                      >
+                        #1005
+                      </a>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900 font-medium">
+                      Sep 4, 2025
+                    </div>
+                    <div class="text-xs text-gray-500">5:54 PM</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-400 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3"
+                      >
+                        SK
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">
+                          Shahriar Kabbo
+                        </div>
+                        <div class="text-xs text-gray-500">+8801627505754</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-lg font-bold text-gray-900">৳553.15</div>
+                    <div class="text-xs text-gray-500">BDT</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                    >
+                      paid
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200"
+                    >
+                      Fulfilled
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Order
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-400 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Tracking
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Items
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Order #1004 -->
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                      <a
+                        href="https://admin.shopify.com/store/kabbo3-store-test/orders/6223058960597"
+                        target="_blank"
+                        class="text-orange-600 hover:text-orange-800 font-semibold text-sm hover:underline transition-colors duration-150"
+                      >
+                        #1004
+                      </a>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900 font-medium">
+                      Sep 4, 2025
+                    </div>
+                    <div class="text-xs text-gray-500">1:02 PM</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3"
+                      >
+                        SK
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">
+                          Shahr Kabbo
+                        </div>
+                        <div class="text-xs text-gray-500">kabbo@ibos.io</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-lg font-bold text-gray-900">৳147.53</div>
+                    <div class="text-xs text-gray-500">BDT</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                    >
+                      paid
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 hover:bg-amber-600 text-white transition-colors duration-150 shadow-sm"
+                    >
+                      Unfulfilled
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Order
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-400 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Tracking
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Items
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Order #1003 -->
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                      <a
+                        href="#"
+                        class="text-orange-600 hover:text-orange-800 font-semibold text-sm hover:underline transition-colors duration-150"
+                      >
+                        #1003
+                      </a>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900 font-medium">
+                      Sep 4, 2025
+                    </div>
+                    <div class="text-xs text-gray-500">10:36 AM</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3"
+                      >
+                        SK
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">
+                          Shahriar Kabbo
+                        </div>
+                        <div class="text-xs text-gray-500">+8801627505754</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-lg font-bold text-gray-900">৳43.31</div>
+                    <div class="text-xs text-gray-500">BDT</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                    >
+                      paid
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200"
+                    >
+                      Unfulfilled
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Create Order
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-400 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Tracking
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Items
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Order #1002 -->
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                      <a
+                        href="#"
+                        class="text-orange-600 hover:text-orange-800 font-semibold text-sm hover:underline transition-colors duration-150"
+                      >
+                        #1002
+                      </a>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900 font-medium">
+                      Aug 27, 2025
+                    </div>
+                    <div class="text-xs text-gray-500">11:44 AM</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3"
+                      >
+                        SK
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">
+                          Shahriar Kabbo
+                        </div>
+                        <div class="text-xs text-gray-500">+8801521530155</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-lg font-bold text-gray-900">৳9.32</div>
+                    <div class="text-xs text-gray-500">BDT</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                    >
+                      paid
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200"
+                    >
+                      Unfulfilled
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Create Order
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-400 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Tracking
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Items
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Order #1001 -->
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                      <a
+                        href="#"
+                        class="text-orange-600 hover:text-orange-800 font-semibold text-sm hover:underline transition-colors duration-150"
+                      >
+                        #1001
+                      </a>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900 font-medium">
+                      Aug 27, 2025
+                    </div>
+                    <div class="text-xs text-gray-500">11:12 AM</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div
+                        class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3"
+                      >
+                        SK
+                      </div>
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">
+                          Shahr Kabbo
+                        </div>
+                        <div class="text-xs text-gray-500">kabbo@ibos.io</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="text-lg font-bold text-gray-900">৳9.32</div>
+                    <div class="text-xs text-gray-500">BDT</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200"
+                    >
+                      paid
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200"
+                    >
+                      Unfulfilled
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Order
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-400 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      Tracking
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="bg-purple-300 hover:bg-purple-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 shadow-sm"
+                    >
+                      View Items
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+            <div class="flex items-center justify-between">
+              <div class="text-sm text-gray-600">
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">5</span> of
+                <span class="font-medium">5</span> orders
+              </div>
+              <nav class="flex items-center space-x-2">
+                <button
+                  class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled
+                >
+                  <i class="fas fa-chevron-left mr-1"></i>
+                  Previous
+                </button>
+                <button
+                  class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 rounded-lg shadow-sm"
+                >
+                  1
+                </button>
+                <button
+                  class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled
+                >
+                  Next
+                  <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
